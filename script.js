@@ -39,22 +39,21 @@ function displayAllBooks() {
 
         const read = document.createElement('h6');
         read.classList.add('read');
-        read.innerText = "Read: " + myLibrary[i].read;
+        read.innerText = "Read: " + (myLibrary[i].read ? "Yes" : "No");
         card.appendChild(read);
     };
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false);
 const theHobbit2 = new Book('The Hobbit 2', 'J.R.R. Tolkein', 295, false);
-const theHobbit3 = new Book('The Hobbit 3', 'J.R.R. Tolkein', 295, false);
+const theHobbit3 = new Book('The Hobbit 3', 'J.R.R. Tolkein', 295, true);
 const theHobbit4 = new Book('The Hobbit 4', 'J.R.R. Tolkein', 295, false);
 const theHobbit5 = new Book('The Hobbit 5', 'J.R.R. Tolkein', 295, false);
-const theHobbit6 = new Book('The Hobbit 6', 'J.R.R. Tolkein', 295, false);
-const theHobbit7 = new Book('The Hobbit 7', 'J.R.R. Tolkein', 295, false);
+const theHobbit6 = new Book('The Hobbit 6', 'J.R.R. Tolkein', 295, true);
+const theHobbit7 = new Book('The Hobbit 7', 'J.R.R. Tolkein', 295, true);
 const theHobbit8 = new Book('The Hobbit 8', 'J.R.R. Tolkein', 295, false);
-const theHobbit9 = new Book('The Hobbit 9', 'J.R.R. Tolkein', 295, false);
+const theHobbit9 = new Book('The Hobbit 9', 'J.R.R. Tolkein', 295, true);
 const theHobbit10 = new Book('The Hobbit 10', 'J.R.R. Tolkein', 295, false);
-
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(theHobbit2);
@@ -68,3 +67,9 @@ addBookToLibrary(theHobbit9);
 addBookToLibrary(theHobbit10);
 
 displayAllBooks();
+
+const addButton = document.getElementById("addBookButton");
+const addDialog = document.querySelector('dialog');
+addButton.addEventListener("click", () => {
+    addDialog.showModal();
+});
