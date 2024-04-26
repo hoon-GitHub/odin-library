@@ -89,14 +89,19 @@ addButton.addEventListener("click", () => {
 // add book
 confirmAddBtn.addEventListener("click", (e) => {
     e.preventDefault(); // prevent form from submitting to server
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const pages = document.getElementById('pages').value;
-    const newBook = new Book(title, author, pages, false);
-    addBookToLibrary(newBook);
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+    const pages = document.getElementById('pages');
+    const newBook = new Book(title.value, author.value, pages.value, false);
+    if (title !== "") addBookToLibrary(newBook); // if title is empty, do not add book
     addDialog.close();
 
     // reload contents
     clearAllBooks();
     displayAllBooks();
+
+    // clear out input fields
+    title.value = "";
+    author.value = "";
+    pages.value = "";
 });
