@@ -6,6 +6,7 @@
 
 body {
     display: grid;
+    justify-items: center;
     font-family: "Nunito", sans-serif;
     background-color: rgb(240, 240, 240);
 }
@@ -20,14 +21,37 @@ body {
 }
 
 .contents {
+    width: 80%;
+    padding-top: 30px;
+    padding-bottom: 50px;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    justify-items: center;
+}
+
+.card {
+    width: 200px;
+    background-color: rgb(250, 250, 250);
+    text-align: center;
+    margin: 20px;
+    padding: 100px 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.card h3 {
+    text-decoration: underline;
+}
+
+.card h4 {
+    font-style: italic;
+    padding-bottom: 1em;
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
+    background-color: rgb(240, 240, 240);
     padding: 10px;
     display: flex;
     justify-content: center;
