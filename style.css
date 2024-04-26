@@ -20,7 +20,7 @@ body {
 }
 
 .contents {
-
+    display: grid;
 }
 
 .footer {
