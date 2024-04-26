@@ -7,19 +7,41 @@
 body {
     display: grid;
     justify-items: center;
-    font-family: "Nunito", sans-serif;
+    font-family: "Nunito", sans-serif; /* use a custom font */
     background-color: rgb(240, 240, 240);
 }
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
     padding: 20px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.btn {
+    display: flex;
+    align-items: center;
+    height: 70%;
+    font-size: 2rem;
+    border: 0;
+    border-radius: 10px;
+    padding: 7px;
+    background-color: white;
+}
+
+.add:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+/* hide button on left */
+.hidden {
+    opacity: 0;
+}
+
+/* main container for books */
 .contents {
     width: 80%;
     padding-top: 30px;
@@ -47,6 +69,7 @@ body {
     padding-bottom: 1em;
 }
 
+/* sticky footer */
 .footer {
     position: fixed;
     bottom: 0;
