@@ -1,6 +1,10 @@
 const myLibrary = [];
 const contents = document.querySelector('.contents');
+const addDialog = document.querySelector('dialog');
+const addButton = document.getElementById('addBookButton');
+const confirmAddBtn = document.querySelector("#confirmAdd");
 
+// class constructor
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -11,13 +15,22 @@ function Book(title, author, pages, read) {
     };
 }
 
+// add book to myLibrary[]
 function addBookToLibrary(book) {
+    book.info();
     myLibrary.push(book);
 }
 
+// clear the contents for reload
+function clearAllBooks() {
+    while (contents.firstChild) {
+        contents.firstChild.remove();
+    };
+}
+
+// display all books in myLibrary[]
 function displayAllBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
-        myLibrary[i].info();
         const card = document.createElement('div');
         card.classList.add('card');
         contents.appendChild(card);
@@ -68,8 +81,22 @@ addBookToLibrary(theHobbit10);
 
 displayAllBooks();
 
-const addButton = document.getElementById("addBookButton");
-const addDialog = document.querySelector('dialog');
+// display dialog
 addButton.addEventListener("click", () => {
     addDialog.showModal();
+});
+
+// add book
+confirmAddBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevent form from submitting to server
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const newBook = new Book(title, author, pages, false);
+    addBookToLibrary(newBook);
+    addDialog.close();
+
+    // reload contents
+    clearAllBooks();
+    displayAllBooks();
 });
