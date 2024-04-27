@@ -105,7 +105,11 @@ dialog form input {
 }
 
 .card h3 {
+    text-align: center;
+    width: 100%;
+    background-color: rgb(230, 230, 230);
     text-decoration: underline;
+    border-radius: 5px;
 }
 
 .card h4 {

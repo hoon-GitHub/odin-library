@@ -1,10 +1,10 @@
 const myLibrary = [];
 const contents = document.querySelector('.contents');
 const addDialog = document.querySelector('dialog');
-const addButton = document.getElementById('addBookButton');
+const addButton = document.querySelector('.add');
 const confirmAddBtn = document.querySelector("#confirmAdd");
 
-// class constructor
+// Book constructor
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -28,7 +28,7 @@ function clearAllBooks() {
     };
 }
 
-// display all books in myLibrary[]
+// display all books in myLibrary[] - create cards
 function displayAllBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div');
@@ -51,26 +51,32 @@ function displayAllBooks() {
         pages.innerText = myLibrary[i].pages + " pages";
         card.appendChild(pages);
 
+        // add read button
         const read = document.createElement('button');
         read.classList.add('read');
-        if (myLibrary[i].read) read.classList.add('yes');
-        else read.classList.add('no');
+        myLibrary[i].read ? read.classList.add('yes') : read.classList.add('no');
         read.innerText = "Read: " + (myLibrary[i].read ? "Yes" : "No");
         card.appendChild(read);
 
+        // toggle read button
+        read.addEventListener('click', () => {
+            myLibrary[i].read = !myLibrary[i].read;
+            clearAllBooks();
+            displayAllBooks();
+        });
+
+        // add remove button
         const removeBtn = document.createElement('button');
         removeBtn.classList.add('remove');
         removeBtn.innerText = "Remove";
+        card.appendChild(removeBtn);
 
-        // remove button function
+        // remove book from library and reload
         removeBtn.addEventListener('click', () => {
             myLibrary.splice(i, 1);
             clearAllBooks();
             displayAllBooks();
         });
-
-        card.appendChild(removeBtn);
-
     };
 }
 
