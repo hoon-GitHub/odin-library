@@ -33,6 +33,7 @@ function displayAllBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
+        card.classList.add(i);
         contents.appendChild(card);
 
         const title = document.createElement('h3');
@@ -47,13 +48,21 @@ function displayAllBooks() {
 
         const pages = document.createElement('h6');
         pages.classList.add('pages');
-        pages.innerText = "Pages: " + myLibrary[i].pages;
+        pages.innerText = myLibrary[i].pages + " pages";
         card.appendChild(pages);
 
-        const read = document.createElement('h6');
+        const read = document.createElement('button');
         read.classList.add('read');
+        if (myLibrary[i].read) read.classList.add('yes');
+        else read.classList.add('no');
         read.innerText = "Read: " + (myLibrary[i].read ? "Yes" : "No");
         card.appendChild(read);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.classList.add('remove');
+        removeBtn.classList.add(i);
+        removeBtn.innerText = "Remove";
+        card.appendChild(removeBtn);
     };
 }
 
