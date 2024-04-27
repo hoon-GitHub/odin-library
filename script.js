@@ -41,7 +41,7 @@ function displayAllBooks() {
         title.innerText = myLibrary[i].title;
         card.appendChild(title);
 
-        const author = document.createElement('h4');
+        const author = document.createElement('h5');
         author.classList.add('author');
         author.innerText = myLibrary[i].author;
         card.appendChild(author);
@@ -58,7 +58,7 @@ function displayAllBooks() {
         read.innerText = "Read: " + (myLibrary[i].read ? "Yes" : "No");
         card.appendChild(read);
 
-        // toggle read button
+        // toggle read button and reload
         read.addEventListener('click', () => {
             myLibrary[i].read = !myLibrary[i].read;
             clearAllBooks();
@@ -80,36 +80,37 @@ function displayAllBooks() {
     };
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false);
-const theHobbit2 = new Book('The Hobbit 2', 'J.R.R. Tolkein', 295, false);
-const theHobbit3 = new Book('The Hobbit 3', 'J.R.R. Tolkein', 295, true);
-const theHobbit4 = new Book('The Hobbit 4', 'J.R.R. Tolkein', 295, false);
-const theHobbit5 = new Book('The Hobbit 5', 'J.R.R. Tolkein', 295, false);
-const theHobbit6 = new Book('The Hobbit 6', 'J.R.R. Tolkein', 295, true);
-const theHobbit7 = new Book('The Hobbit 7', 'J.R.R. Tolkein', 295, true);
-const theHobbit8 = new Book('The Hobbit 8', 'J.R.R. Tolkein', 295, false);
-const theHobbit9 = new Book('The Hobbit 9', 'J.R.R. Tolkein', 295, true);
-const theHobbit10 = new Book('The Hobbit 10', 'J.R.R. Tolkein', 295, false);
+// create some sample books
+const book1 = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false);
+const book2 = new Book('Don Quixote', 'Miguel de Cervantes', 150, false);
+const book3 = new Book('A Tale of Two Cities', 'Charles Dickens', 300, true);
+const book4 = new Book('The Little Prince', 'Antoine de Saint-Exupery', 150, false);
+const book5 = new Book('The Alchemist', 'Paulo Coelho', 163, false);
+const book6 = new Book('Harry Potter', 'J.K. Rowling', 400, true);
+const book7 = new Book('And Then There Were None', 'Agatha Christie', 272, true);
+const book8 = new Book('Dream of the Red Chamber', 'Cao Xueqin', 500, false);
+const book9 = new Book('The Da Vinci Code', 'Dan Brown', 689, true);
+const book10 = new Book('Cosmos', 'Carl Sagan', 365, false);
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit2);
-addBookToLibrary(theHobbit3);
-addBookToLibrary(theHobbit4);
-addBookToLibrary(theHobbit5);
-addBookToLibrary(theHobbit6);
-addBookToLibrary(theHobbit7);
-addBookToLibrary(theHobbit8);
-addBookToLibrary(theHobbit9);
-addBookToLibrary(theHobbit10);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3);
+addBookToLibrary(book4);
+addBookToLibrary(book5);
+addBookToLibrary(book6);
+addBookToLibrary(book7);
+addBookToLibrary(book8);
+addBookToLibrary(book9);
+addBookToLibrary(book10);
 
 displayAllBooks();
 
-// display dialog
+// display dialog when add book button is clicked
 addButton.addEventListener("click", () => {
     addDialog.showModal();
 });
 
-// add book
+// add new book
 confirmAddBtn.addEventListener("click", (e) => {
     e.preventDefault(); // prevent form from submitting to server
     const title = document.getElementById('title');
