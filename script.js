@@ -33,7 +33,7 @@ function displayAllBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.classList.add(i);
+        card.dataset.index = i;
         contents.appendChild(card);
 
         const title = document.createElement('h3');
@@ -60,9 +60,17 @@ function displayAllBooks() {
 
         const removeBtn = document.createElement('button');
         removeBtn.classList.add('remove');
-        removeBtn.classList.add(i);
         removeBtn.innerText = "Remove";
+
+        // remove button function
+        removeBtn.addEventListener('click', () => {
+            myLibrary.splice(i, 1);
+            clearAllBooks();
+            displayAllBooks();
+        });
+
         card.appendChild(removeBtn);
+
     };
 }
 
