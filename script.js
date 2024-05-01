@@ -4,15 +4,17 @@ const addDialog = document.querySelector('dialog');
 const addButton = document.querySelector('.add');
 const confirmAddBtn = document.querySelector("#confirmAdd");
 
-// Book constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
+// Rewritten the Book constructor into a class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    info() {
         console.log(`${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`);
-    };
+    }
 }
 
 // add book to myLibrary[]
