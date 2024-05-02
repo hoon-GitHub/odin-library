@@ -12,14 +12,25 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
-    info() {
-        console.log(`${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`);
+
+    // convert the info method to a getter
+    get info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`;
     }
+
+    // new setters as utility
+    set newTitle(newTitle) {
+        this.title = newTitle;
+    }
+    set newPages(newPages) {
+        this.pages = newPages;
+    }
+
 }
 
 // add book to myLibrary[]
 function addBookToLibrary(book) {
-    book.info();
+    console.log(book.info);
     myLibrary.push(book);
 }
 
@@ -104,6 +115,10 @@ addBookToLibrary(book7);
 addBookToLibrary(book8);
 addBookToLibrary(book9);
 addBookToLibrary(book10);
+
+// testing setter function
+book1.newTitle = 'The Hobbit 2';
+book6.newPages = 1000;
 
 displayAllBooks();
 
